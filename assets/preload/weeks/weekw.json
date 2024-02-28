@@ -1,0 +1,41 @@
+{
+	"storyName": "TestSongWeek",
+	"difficulties": "HARD",
+	"hideFreeplay": false,
+	"weekBackground": "",
+	"freeplayColor": [
+		146,
+		113,
+		253
+	],
+	"weekBefore": "week7",
+	"startUnlocked": true,
+	"weekCharacters": [
+		"dad",
+		"bf",
+		"gf"
+	],
+	"songs": [
+		[
+			"taskWork",
+			"white",
+			[
+				255,
+				253,
+				255
+			]
+		],
+		[
+			"Encounter",
+			"purplbooscari",
+			[
+				106,
+				60,
+				135
+			]
+		]
+	],
+	"hideStoryMode": true,
+	"weekName": "SongTest",
+	"hiddenUntilUnlocked": false
+}

@@ -1,0 +1,45 @@
+{
+	"animations": [
+		{
+			"loop": true,
+			"offsets": [
+				-531,
+				-445
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "purple",
+			"indices": []
+		},
+		{
+			"offsets": [
+				-531,
+				-445
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": true,
+			"name": "purple"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/purplbooscari",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "purplbooscari",
+	"flip_x": false,
+	"healthbar_colors": [
+		113,
+		67,
+		96
+	],
+	"camera_position": [
+		380,
+		460
+	],
+	"sing_duration": 6.1,
+	"scale": 1
+}

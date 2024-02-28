@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="purplbooscari.png">
+	<!-- Created with Adobe Animate version 22.0.5.191 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="purple0000" x="10" y="10" width="537" height="283"/>
+	<SubTexture name="purple0001" x="10" y="10" width="537" height="283"/>
+	<SubTexture name="purple0002" x="557" y="10" width="536" height="281" frameX="-1" frameY="-1" frameWidth="537" frameHeight="283"/>
+	<SubTexture name="purple0003" x="557" y="10" width="536" height="281" frameX="-1" frameY="-1" frameWidth="537" frameHeight="283"/>
+	<SubTexture name="purple0004" x="1103" y="10" width="535" height="281" frameX="-1" frameY="-1" frameWidth="537" frameHeight="283"/>
+	<SubTexture name="purple0005" x="1103" y="10" width="535" height="281" frameX="-1" frameY="-1" frameWidth="537" frameHeight="283"/>
+</TextureAtlas>
