@@ -20,6 +20,7 @@ class ClientPrefs {
 	public static var cursing:Bool = true;
 	public static var violence:Bool = true;
 	public static var camZooms:Bool = true;
+	public static var complexRating:Bool = false;
 	public static var hideHud:Bool = false;
 	public static var noteOffset:Int = 0;
 	public static var arrowHSV:Array<Array<Int>> = [[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]];
@@ -108,6 +109,7 @@ class ClientPrefs {
 		//FlxG.save.data.violence = violence;
 		FlxG.save.data.camZooms = camZooms;
 		FlxG.save.data.noteOffset = noteOffset;
+		FlxG.save.data.complexRating = complexRating;
 		FlxG.save.data.hideHud = hideHud;
 		FlxG.save.data.arrowHSV = arrowHSV;
 		FlxG.save.data.ghostTapping = ghostTapping;
@@ -189,6 +191,9 @@ class ClientPrefs {
 		}*/
 		if(FlxG.save.data.camZooms != null) {
 			camZooms = FlxG.save.data.camZooms;
+		}
+		if(FlxG.save.data.complexRating != null) {
+			complexRating = FlxG.save.data.complexRating;
 		}
 		if(FlxG.save.data.hideHud != null) {
 			hideHud = FlxG.save.data.hideHud;

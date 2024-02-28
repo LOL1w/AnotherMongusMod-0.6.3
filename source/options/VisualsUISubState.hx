@@ -41,6 +41,12 @@ class VisualsUISubState extends BaseOptionsMenu
 			true);
 		addOption(option);
 
+		var option:Option = new Option('Complex Rating', //Name
+		'If unchecked, Rating and Misses wont be visible.', //Description
+		'complexRating', //Save data variable name
+		'bool'); //Variable type
+	addOption(option);
+
 		var option:Option = new Option('Hide HUD',
 			'If checked, hides most HUD elements.',
 			'hideHud',

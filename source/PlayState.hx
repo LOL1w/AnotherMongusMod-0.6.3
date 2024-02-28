@@ -2305,10 +2305,15 @@ class PlayState extends MusicBeatState
 
 	public function updateScore(miss:Bool = false)
 	{
-		scoreTxt.text = 'Score: ' + songScore
-		+ ' | Misses: ' + songMisses
-		+ ' | Rating: ' + ratingName
-		+ (ratingName != '?' ? ' (${Highscore.floorDecimal(ratingPercent * 100, 2)}%) - $ratingFC' : '');
+		var str:String = ratingName;
+		if(totalPlayed != 0)
+		{
+			var percent:Float = Highscore.floorDecimal(ratingPercent * 100, 2);
+			str += ' ($percent%) - $ratingFC';
+		}
+
+		if (!ClientPrefs.complexRating) scoreTxt.text = 'Score: ' + songScore;
+		if (ClientPrefs.complexRating) scoreTxt.text = 'Score: ' + songScore + ' | Misses: ' + songMisses + ' | Rating: ' + str;
 
 		if(ClientPrefs.scoreZoom && !miss && !cpuControlled)
 		{
