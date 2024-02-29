@@ -2312,7 +2312,11 @@ class PlayState extends MusicBeatState
 			str += ' ($percent%) - $ratingFC';
 		}
 
-		if (!ClientPrefs.complexRating) scoreTxt.text = 'Score: ' + songScore;
+		if (!ClientPrefs.complexRating) {
+			scoreTxt.text = 'Score: ' + songScore;
+			scoreTxt.x = 145;
+		}
+
 		if (ClientPrefs.complexRating) scoreTxt.text = 'Score: ' + songScore + ' | Misses: ' + songMisses + ' | Rating: ' + str;
 
 		if(ClientPrefs.scoreZoom && !miss && !cpuControlled)
