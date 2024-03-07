@@ -12,6 +12,8 @@ import flixel.util.FlxColor;
 import lime.system.System;
 import editors.MasterEditorMenu;
 import flixel.addons.display.FlxBackdrop;
+import PlayState;
+import TitleState;
 
 using StringTools;
 
@@ -105,6 +107,8 @@ class MainMenuState extends MusicBeatState
         super.create();
     }
 
+
+
     override public function update(elapsed:Float):Void
     {
         if (FlxG.mouse.justPressed && FlxG.mouse.overlaps(storymode))
@@ -153,8 +157,16 @@ class MainMenuState extends MusicBeatState
             }
         */
 
-        trace(storymode.y);
+        //trace(storymode.y);
         super.update(elapsed);
-    }
 
+        
+    }
+    
+    override function beatHit() {
+
+        FlxG.camera.zoom += 1;
+        super.beatHit();
+    }
 }
+
