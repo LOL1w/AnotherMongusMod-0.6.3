@@ -11,6 +11,7 @@ import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import lime.system.System;
 import editors.MasterEditorMenu;
+import flixel.addons.display.FlxBackdrop;
 
 using StringTools;
 
@@ -23,50 +24,71 @@ class MainMenuState extends MusicBeatState
     var freeplay:FlxSprite;
     var credits:FlxSprite;
     var settings:FlxSprite;
+    var starFG:FlxBackdrop;
+    var starBG:FlxBackdrop;
 
     var placeholdermainmenu:FlxSprite;
 
     override public function create():Void
     {    
-        var spriteSizes:Float = 0.5;
+        var spriteSizes:Float = 0.45;
 
         FlxG.mouse.visible = true;
 
         //transIn = FlxTransitionableState.defaultTransIn;
        // transOut = FlxTransitionableState.defaultTransOut;
 
-       placeholdermainmenu = new FlxSprite();
-       placeholdermainmenu.loadGraphic('assets/images/placeholdermainmenu.png');
-       placeholdermainmenu.screenCenter();
-       add(placeholdermainmenu);
+       starFG = new FlxBackdrop();
+       starFG.loadGraphic('assets/images/starFG.png');
+       starFG.velocity.set(5, 0);
+       starFG.antialiasing = ClientPrefs.globalAntialiasing;
+       add(starFG);
 
-       tabletPortrait = new FlxSprite(46, 110);
+       starBG = new FlxBackdrop();
+       starBG.loadGraphic('assets/images/starBG.png');
+       starBG.velocity.set(3, 0);
+       starBG.antialiasing = ClientPrefs.globalAntialiasing;
+       add(starBG);
+
+       placeholdermainmenu = new FlxSprite();
+       placeholdermainmenu.loadGraphic('assets/images/mainmenu/bg.png');
+       placeholdermainmenu.screenCenter();
+       placeholdermainmenu.antialiasing = ClientPrefs.globalAntialiasing;
+       add(placeholdermainmenu);
+   
+
+       tabletPortrait = new FlxSprite(46 - 9, 130);
        tabletPortrait.loadGraphic('assets/images/mainmenu/tablet.png');
        add(tabletPortrait);
        tabletPortrait.scale.set(spriteSizes, spriteSizes);
        tabletPortrait.updateHitbox();
+       tabletPortrait.antialiasing = ClientPrefs.globalAntialiasing;
 
-        storymode = new FlxSprite(77, 177);
+        storymode = new FlxSprite(73 - 9, 182);
         storymode.loadGraphic('assets/images/mainmenu/Storymode.png');
         add(storymode);
+        storymode.antialiasing = ClientPrefs.globalAntialiasing;
         storymode.scale.set(spriteSizes, spriteSizes);
         storymode.updateHitbox();
 
         freeplay = new FlxSprite(storymode.x, storymode.y + 106);
         freeplay.loadGraphic('assets/images/mainmenu/freeplay.png');
         add(freeplay);
+        freeplay.antialiasing = ClientPrefs.globalAntialiasing;
         freeplay.scale.set(spriteSizes, spriteSizes);
         freeplay.updateHitbox();
 
         credits = new FlxSprite(storymode.x, freeplay.y + 106);
         credits.loadGraphic('assets/images/mainmenu/credits.png');
         add(credits);
+        credits.antialiasing = ClientPrefs.globalAntialiasing;
         credits.scale.set(spriteSizes, spriteSizes);
         credits.updateHitbox();
 
         settings = new FlxSprite(storymode.x, credits.y + 106);
         settings.loadGraphic('assets/images/mainmenu/settings.png');
         add(settings);
+        settings.antialiasing = ClientPrefs.globalAntialiasing;
         settings.scale.set(spriteSizes, spriteSizes);
         settings.updateHitbox();
 
@@ -75,7 +97,7 @@ class MainMenuState extends MusicBeatState
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
 
-		var versionShit:FlxText = new FlxText(12, FlxG.height - 24, 0, "Another Amongus Mod' V1", 12);
+		var versionShit:FlxText = new FlxText(12, FlxG.height - 24, 0, "Another Amongus Mod' DEMO", 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
@@ -87,14 +109,14 @@ class MainMenuState extends MusicBeatState
     {
         if (FlxG.mouse.justPressed && FlxG.mouse.overlaps(storymode))
             {
-                FlxG.sound.play('assets/sounds/confirmMenu.ogg');
+                FlxG.sound.play('assets/sounds/select.ogg');
 
                 MusicBeatState.switchState(new StoryMenuState());
             }
 
         else if (FlxG.mouse.justPressed && FlxG.mouse.overlaps(freeplay))
             {
-                FlxG.sound.play('assets/sounds/confirmMenu.ogg');
+                FlxG.sound.play('assets/sounds/select.ogg');
 
                 MusicBeatState.switchState(new FreeplayState());
             }
@@ -102,7 +124,7 @@ class MainMenuState extends MusicBeatState
         else if (FlxG.mouse.justPressed && FlxG.mouse.overlaps(credits))
             {
 
-                FlxG.sound.play('assets/sounds/confirmMenu.ogg');
+                FlxG.sound.play('assets/sounds/select.ogg');
 
                 MusicBeatState.switchState(new CreditsState());
             }
@@ -111,7 +133,7 @@ class MainMenuState extends MusicBeatState
             {
                 LoadingState.loadAndSwitchState(new options.OptionsState());
 
-                FlxG.sound.play('assets/sounds/confirmMenu.ogg');
+                FlxG.sound.play('assets/sounds/select.ogg');
             }
 
         else if (FlxG.keys.justPressed.SEVEN)
@@ -131,7 +153,7 @@ class MainMenuState extends MusicBeatState
             }
         */
 
-        //trace(freeplay.y);
+        trace(storymode.y);
         super.update(elapsed);
     }
 
