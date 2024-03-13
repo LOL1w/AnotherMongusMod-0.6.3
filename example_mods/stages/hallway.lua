@@ -25,6 +25,15 @@ function onCreate()
 	makeLuaSprite("vent", "stages/Fireinthehole", x, y)
 	scaleObject("vent", 0.5, 0.5)
 	addLuaSprite("vent", false)
+
+	makeLuaSprite("blendLight", "stages/blendLight", x + 6, y - 15)
+	scaleObject("blendLight", 0.5, 0.5)
+	addLuaSprite("blendLight", true)
+	setBlendMode('blendLight', 'add')
+
+	makeLuaSprite('Light', 'stages/Light', x, y)
+	scaleObject('Light', 0.5, 0.5)
+	addLuaSprite('Light', false)
 end
 
 

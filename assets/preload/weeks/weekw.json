@@ -3,18 +3,14 @@
 	"difficulties": "HARD",
 	"hideFreeplay": false,
 	"weekBackground": "",
+	"weekBefore": "week7",
 	"freeplayColor": [
 		146,
 		113,
 		253
 	],
-	"weekBefore": "week7",
 	"startUnlocked": true,
-	"weekCharacters": [
-		"dad",
-		"bf",
-		"gf"
-	],
+	"hideStoryMode": true,
 	"songs": [
 		[
 			"taskWork",
@@ -33,9 +29,40 @@
 				60,
 				135
 			]
+		],
+		[
+			"Snowy Rear",
+			"skullmongus",
+			[
+				255,
+				253,
+				255
+			]
+		],
+		[
+			"Sussus Skeletus",
+			"skullmongus",
+			[
+				253,
+				255,
+				255
+			]
+		],
+		[
+			"System Failure",
+			"dad",
+			[
+				146,
+				113,
+				253
+			]
 		]
 	],
-	"hideStoryMode": true,
-	"weekName": "SongTest",
-	"hiddenUntilUnlocked": false
+	"weekCharacters": [
+		"dad",
+		"bf",
+		"gf"
+	],
+	"hiddenUntilUnlocked": false,
+	"weekName": "SongTest"
 }

@@ -28,8 +28,9 @@ class MainMenuState extends MusicBeatState
     var settings:FlxSprite;
     var starFG:FlxBackdrop;
     var starBG:FlxBackdrop;
+    var loggo:FlxSprite;
 
-    var placeholdermainmenu:FlxSprite;
+    var foreground:FlxSprite;
 
     override public function create():Void
     {    
@@ -52,12 +53,12 @@ class MainMenuState extends MusicBeatState
        starBG.antialiasing = ClientPrefs.globalAntialiasing;
        add(starBG);
 
-       placeholdermainmenu = new FlxSprite();
-       placeholdermainmenu.loadGraphic('assets/images/mainmenu/bg.png');
-       placeholdermainmenu.screenCenter();
-       placeholdermainmenu.antialiasing = ClientPrefs.globalAntialiasing;
-       add(placeholdermainmenu);
-   
+       foreground = new FlxSprite();
+       foreground.loadGraphic('assets/images/mainmenu/bg.png');
+       foreground.screenCenter();
+       foreground.antialiasing = ClientPrefs.globalAntialiasing;
+       add(foreground);
+
 
        tabletPortrait = new FlxSprite(46 - 9, 130);
        tabletPortrait.loadGraphic('assets/images/mainmenu/tablet.png');
@@ -103,6 +104,14 @@ class MainMenuState extends MusicBeatState
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
+        
+        loggo = new FlxSprite(140, 4); // -202, -405
+        loggo.loadGraphic('assets/images/loggo.png');
+        loggo.antialiasing = ClientPrefs.globalAntialiasing;
+        loggo.scale.set(spriteSizes -0.30, spriteSizes -0.30);
+        add(loggo);
+        //loggo.screenCenter();
+        loggo.updateHitbox();
 
         super.create();
     }
@@ -157,16 +166,10 @@ class MainMenuState extends MusicBeatState
             }
         */
 
-        //trace(storymode.y);
+        // trace(loggo.x, loggo.y);
         super.update(elapsed);
 
         
-    }
-    
-    override function beatHit() {
-
-        FlxG.camera.zoom += 1;
-        super.beatHit();
     }
 }
 

@@ -2314,7 +2314,7 @@ class PlayState extends MusicBeatState
 
 		if (!ClientPrefs.complexRating) {
 			scoreTxt.text = 'Score: ' + songScore;
-			scoreTxt.x = 145;
+			scoreTxt.x = 154;
 		}
 
 		if (ClientPrefs.complexRating) scoreTxt.text = 'Score: ' + songScore + ' | Misses: ' + songMisses + ' | Rating: ' + str;
