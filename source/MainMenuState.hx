@@ -14,6 +14,7 @@ import editors.MasterEditorMenu;
 import flixel.addons.display.FlxBackdrop;
 import PlayState;
 import TitleState;
+import flixel.graphics.frames.FlxAtlasFrames;
 
 using StringTools;
 
@@ -67,33 +68,53 @@ class MainMenuState extends MusicBeatState
        tabletPortrait.updateHitbox();
        tabletPortrait.antialiasing = ClientPrefs.globalAntialiasing;
 
-        storymode = new FlxSprite(73 - 9, 182);
-        storymode.loadGraphic('assets/images/mainmenu/Storymode.png');
-        add(storymode);
-        storymode.antialiasing = ClientPrefs.globalAntialiasing;
-        storymode.scale.set(spriteSizes, spriteSizes);
-        storymode.updateHitbox();
+       storymode = new FlxSprite(73 - 9, 182);
+       storymode.frames = Paths.getSparrowAtlas('mainmenu/storymode');
+       storymode.animation.addByPrefix('unselected', 'unselected', 24);
+       storymode.animation.addByPrefix('selected', 'selected', 24);
 
-        freeplay = new FlxSprite(storymode.x, storymode.y + 106);
-        freeplay.loadGraphic('assets/images/mainmenu/freeplay.png');
-        add(freeplay);
-        freeplay.antialiasing = ClientPrefs.globalAntialiasing;
-        freeplay.scale.set(spriteSizes, spriteSizes);
-        freeplay.updateHitbox();
+       storymode.animation.play('selected');
 
-        credits = new FlxSprite(storymode.x, freeplay.y + 106);
-        credits.loadGraphic('assets/images/mainmenu/credits.png');
-        add(credits);
-        credits.antialiasing = ClientPrefs.globalAntialiasing;
-        credits.scale.set(spriteSizes, spriteSizes);
-        credits.updateHitbox();
+       add(storymode);
+       storymode.antialiasing = ClientPrefs.globalAntialiasing;
+       storymode.scale.set(spriteSizes, spriteSizes);
+       storymode.updateHitbox();
 
-        settings = new FlxSprite(storymode.x, credits.y + 106);
-        settings.loadGraphic('assets/images/mainmenu/settings.png');
-        add(settings);
-        settings.antialiasing = ClientPrefs.globalAntialiasing;
-        settings.scale.set(spriteSizes, spriteSizes);
-        settings.updateHitbox();
+       freeplay = new FlxSprite(storymode.x, storymode.y + 106);
+       freeplay.frames = Paths.getSparrowAtlas('mainmenu/freeplay');
+       freeplay.animation.addByPrefix('unselected', 'unselected', 24);
+       freeplay.animation.addByPrefix('selected', 'selected', 24);
+
+       freeplay.animation.play('selected');
+
+       add(freeplay);
+       freeplay.antialiasing = ClientPrefs.globalAntialiasing;
+       freeplay.scale.set(spriteSizes, spriteSizes);
+       freeplay.updateHitbox();
+
+       settings = new FlxSprite(freeplay.x, freeplay.y + 106);
+       settings.frames = Paths.getSparrowAtlas('mainmenu/settings');
+       settings.animation.addByPrefix('unselected', 'unselected', 24);
+       settings.animation.addByPrefix('selected', 'selected', 24);
+
+       settings.animation.play('selected');
+
+       add(settings);
+       settings.antialiasing = ClientPrefs.globalAntialiasing;
+       settings.scale.set(spriteSizes, spriteSizes);
+       settings.updateHitbox();
+
+       credits = new FlxSprite(settings.x, settings.y + 106);
+       credits.frames = Paths.getSparrowAtlas('mainmenu/credits');
+       credits.animation.addByPrefix('unselected', 'unselected', 24);
+       credits.animation.addByPrefix('selected', 'selected', 24);
+
+       credits.animation.play('selected');
+
+       add(credits);
+       credits.antialiasing = ClientPrefs.globalAntialiasing;
+       credits.scale.set(spriteSizes, spriteSizes);
+       credits.updateHitbox();
 
 		var versionShit:FlxText = new FlxText(12, FlxG.height - 44, 0, "Psych Engine v" + psychEngineVersion, 12);
 		versionShit.scrollFactor.set();
@@ -116,10 +137,24 @@ class MainMenuState extends MusicBeatState
         super.create();
     }
 
-
-
     override public function update(elapsed:Float):Void
     {
+
+        //trace(storymode.x, storymode.y);
+
+        if (FlxG.mouse.overlaps(storymode))
+            {
+                storymode.animation.play('selected');
+                storymode.offset.set(258, 73);
+            }
+
+        else 
+            {
+                storymode.animation.play('unselected');
+                //storymode.offset.set(100, 200);
+                storymode.updateHitbox();
+            }
+            
         if (FlxG.mouse.justPressed && FlxG.mouse.overlaps(storymode))
             {
                 FlxG.sound.play('assets/sounds/select.ogg');
@@ -127,28 +162,69 @@ class MainMenuState extends MusicBeatState
                 MusicBeatState.switchState(new StoryMenuState());
             }
 
-        else if (FlxG.mouse.justPressed && FlxG.mouse.overlaps(freeplay))
+
+        if (FlxG.mouse.overlaps(freeplay))
+            {
+                freeplay.animation.play('selected');
+                freeplay.offset.set(258, 73);
+            }
+    
+        else 
+            {
+                freeplay.animation.play('unselected');
+                //freeplay.offset.set(100, 200);
+                freeplay.updateHitbox();
+            }
+                
+        if (FlxG.mouse.justPressed && FlxG.mouse.overlaps(freeplay))
             {
                 FlxG.sound.play('assets/sounds/select.ogg');
 
                 MusicBeatState.switchState(new FreeplayState());
             }
 
-        else if (FlxG.mouse.justPressed && FlxG.mouse.overlaps(credits))
+
+        if (FlxG.mouse.overlaps(settings))
             {
-
-                FlxG.sound.play('assets/sounds/select.ogg');
-
-                MusicBeatState.switchState(new CreditsState());
+                settings.animation.play('selected');
+                settings.offset.set(258, 73);
+            }
+        
+        else 
+            {
+                settings.animation.play('unselected');
+                //settings.offset.set(100, 200);
+                settings.updateHitbox();
+            }
+                        
+        if (FlxG.mouse.justPressed && FlxG.mouse.overlaps(settings))
+            {
+               FlxG.sound.play('assets/sounds/select.ogg');
+            
+               MusicBeatState.switchState(new OptionsState());
             }
 
-        else if (FlxG.mouse.justPressed && FlxG.mouse.overlaps(settings))
+
+        if (FlxG.mouse.overlaps(credits))
             {
-                LoadingState.loadAndSwitchState(new options.OptionsState());
-
-                FlxG.sound.play('assets/sounds/select.ogg');
+                credits.animation.play('selected');
+                credits.offset.set(258, 73);
             }
+    
+        else 
+            {
+                   credits.animation.play('unselected');
+                //credits.offset.set(100, 200);
+                credits.updateHitbox();
+            }
+                    
+        if (FlxG.mouse.justPressed && FlxG.mouse.overlaps(credits))
+            {
+               FlxG.sound.play('assets/sounds/select.ogg');
 
+               MusicBeatState.switchState(new CreditsState());
+            }
+            
         else if (FlxG.keys.justPressed.SEVEN)
             {
                 MusicBeatState.switchState(new MasterEditorMenu());
@@ -158,18 +234,12 @@ class MainMenuState extends MusicBeatState
             {
                 FlxG.switchState(new TitleState());
             }
+
         
-        /*
-        if (FlxG.keys.justPressed.F4)
-            {
-                System.exit(0);
-            }
-        */
-
-        // trace(loggo.x, loggo.y);
+        //storymode.centerOffsets();
         super.update(elapsed);
-
         
     }
+
 }
 
