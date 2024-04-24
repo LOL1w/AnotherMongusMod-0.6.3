@@ -162,6 +162,11 @@ class MainMenuState extends MusicBeatState
                 MusicBeatState.switchState(new StoryMenuState());
             }
 
+        if (FlxG.keys.justPressed.S)
+            {
+                MusicBeatState.switchState(new StorymodeState());
+            }
+
 
         if (FlxG.mouse.overlaps(freeplay))
             {

@@ -44,7 +44,7 @@ class DiscordClient
 		DiscordRpc.presence({
 			details: "In the Menus",
 			state: null,
-			largeImageKey: 'anotheramongusmodlogo',
+			largeImageKey: 'anotherloggo',
 			largeImageText: "Another Amongus Mod'"
 		});
 	}
@@ -81,7 +81,7 @@ class DiscordClient
 		DiscordRpc.presence({
 			details: details,
 			state: state,
-			largeImageKey: 'anotheramongusmodlogo',
+			largeImageKey: 'anotherloggo',
 			largeImageText: "Another AmongUs Mod' Demo",
 			smallImageKey : smallImageKey,
 			// Obtained times are in milliseconds so they are divided so Discord can use it

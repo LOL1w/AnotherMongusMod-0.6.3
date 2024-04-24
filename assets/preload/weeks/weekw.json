@@ -10,7 +10,7 @@
 		253
 	],
 	"startUnlocked": true,
-	"hideStoryMode": true,
+	"hideStoryMode": false,
 	"songs": [
 		[
 			"taskWork",
@@ -31,25 +31,7 @@
 			]
 		],
 		[
-			"Snowy Rear",
-			"skullmongus",
-			[
-				255,
-				253,
-				255
-			]
-		],
-		[
-			"Sussus Skeletus",
-			"skullmongus",
-			[
-				253,
-				255,
-				255
-			]
-		],
-		[
-			"System Failure",
+			"Impollo",
 			"dad",
 			[
 				146,

@@ -37,6 +37,7 @@ import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import lime.app.Application;
 import openfl.Assets;
+import flixel.addons.display.FlxBackdrop;
 
 using StringTools;
 typedef TitleData =
@@ -64,6 +65,8 @@ class TitleState extends MusicBeatState
 	var credTextShit:Alphabet;
 	var textGroup:FlxGroup;
 	var ngSpr:FlxSprite;
+	var starFG:FlxBackdrop;
+    var starBG:FlxBackdrop;
 	
 	var titleTextColors:Array<FlxColor> = [0xFF33FFFF, 0xFF3333CC];
 	var titleTextAlphas:Array<Float> = [1, .64];
@@ -293,6 +296,18 @@ class TitleState extends MusicBeatState
 		logoBl.screenCenter();
 		// logoBl.color = FlxColor.BLACK;
 
+		starFG = new FlxBackdrop();
+		starFG.loadGraphic('assets/images/starFG.png');
+		starFG.velocity.set(5, 0);
+		starFG.antialiasing = ClientPrefs.globalAntialiasing;
+		add(starFG);
+ 
+		starBG = new FlxBackdrop();
+		starBG.loadGraphic('assets/images/starBG.png');
+		starBG.velocity.set(3, 0);
+		starBG.antialiasing = ClientPrefs.globalAntialiasing;
+		add(starBG);
+
 		swagShader = new ColorSwap();
 		gfDance = new FlxSprite(titleJSON.gfx, titleJSON.gfy);
 
@@ -382,8 +397,8 @@ class TitleState extends MusicBeatState
 		logo.antialiasing = ClientPrefs.globalAntialiasing;
 		// add(logo);
 
-		FlxTween.tween(logoBl, {y: logoBl.y + 20}, 2.86, {ease: FlxEase.quadInOut, type: PINGPONG});
-		FlxTween.tween(logo, {y: logoBl.y + 10}, 2.95, {ease: FlxEase.quadInOut, type: PINGPONG, startDelay: 0.1});
+		FlxTween.tween(logoBl, {y: logoBl.y + -20}, 2.86, {ease: FlxEase.quadInOut, type: PINGPONG});
+		//FlxTween.tween(logo, {y: logoBl.y + 10}, 2.95, {ease: FlxEase.quadInOut, type: PINGPONG, startDelay: 0.1});
 
 		credGroup = new FlxGroup();
 		add(credGroup);

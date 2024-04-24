@@ -18,6 +18,7 @@ import flixel.util.FlxTimer;
 import lime.net.curl.CURLCode;
 import flixel.graphics.FlxGraphic;
 import WeekData;
+import flixel.addons.display.FlxBackdrop;
 
 using StringTools;
 
@@ -47,6 +48,14 @@ class StoryMenuState extends MusicBeatState
 	var leftArrow:FlxSprite;
 	var rightArrow:FlxSprite;
 
+	var starFG:FlxBackdrop;
+    var starBG:FlxBackdrop;
+    var weektablet:FlxSprite;
+    var songtablet:FlxSprite;
+    var opponenttablet:FlxSprite;
+    var opos:FlxSprite;
+    var week1:FlxSprite;
+
 	var loadedWeeks:Array<WeekData> = [];
 
 	override function create()
@@ -59,8 +68,42 @@ class StoryMenuState extends MusicBeatState
 		if(curWeek >= WeekData.weeksList.length) curWeek = 0;
 		persistentUpdate = persistentDraw = true;
 
-		scoreText = new FlxText(10, 10, 0, "SCORE: 49324858", 36);
-		scoreText.setFormat("VCR OSD Mono", 32);
+		starFG = new FlxBackdrop();
+		starFG.loadGraphic('assets/images/starFG.png');
+		starFG.velocity.set(5, 0);
+		starFG.antialiasing = ClientPrefs.globalAntialiasing;
+		add(starFG);
+ 
+		starBG = new FlxBackdrop();
+		starBG.loadGraphic('assets/images/starBG.png');
+		starBG.velocity.set(3, 0);
+		starBG.antialiasing = ClientPrefs.globalAntialiasing;
+		add(starBG);
+
+		weektablet = new FlxSprite(28, 56);
+		weektablet.loadGraphic('assets/images/storymode/weektablet.png');
+		add(weektablet);
+
+		week1 = new FlxSprite(76, 99);
+		week1.loadGraphic('assets/images/storymode/week1.png');
+		add(week1);
+		week1.alpha = 0.5;
+
+		songtablet = new FlxSprite(767, 54);
+		songtablet.loadGraphic('assets/images/storymode/songtablet.png');
+		add(songtablet);
+
+		opponenttablet = new FlxSprite(780, 262);
+		opponenttablet.loadGraphic('assets/images/storymode/opponenttablet.png');
+		add(opponenttablet);
+
+		opos = new FlxSprite(869, 371);
+		opos.loadGraphic('assets/images/storymode/opos.png');
+		add(opos);
+
+
+		scoreText = new FlxText(764, -18, 0, "SCORE: 49324858", 42);
+		scoreText.setFormat(Paths.font('AmaticSC.ttf'), 60);
 
 		txtWeekTitle = new FlxText(FlxG.width * 0.7, 10, 0, "", 32);
 		txtWeekTitle.setFormat("VCR OSD Mono", 32, FlxColor.WHITE, RIGHT);
@@ -78,15 +121,15 @@ class StoryMenuState extends MusicBeatState
 		bgSprite.antialiasing = ClientPrefs.globalAntialiasing;
 
 		grpWeekText = new FlxTypedGroup<MenuItem>();
-		add(grpWeekText);
+		//add(grpWeekText);
 
 		var blackBarThingie:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, 56, FlxColor.BLACK);
-		add(blackBarThingie);
+		//add(blackBarThingie);
 
 		grpWeekCharacters = new FlxTypedGroup<MenuCharacter>();
 
 		grpLocks = new FlxTypedGroup<FlxSprite>();
-		add(grpLocks);
+		//add(grpLocks);
 
 		#if desktop
 		// Updating Discord Rich Presence
@@ -136,7 +179,7 @@ class StoryMenuState extends MusicBeatState
 		}
 
 		difficultySelectors = new FlxGroup();
-		add(difficultySelectors);
+		//add(difficultySelectors);
 
 		leftArrow = new FlxSprite(grpWeekText.members[0].x + grpWeekText.members[0].width + 10, grpWeekText.members[0].y + 10);
 		leftArrow.frames = ui_tex;
@@ -165,22 +208,22 @@ class StoryMenuState extends MusicBeatState
 		rightArrow.antialiasing = ClientPrefs.globalAntialiasing;
 		difficultySelectors.add(rightArrow);
 
-		add(bgYellow);
-		add(bgSprite);
-		add(grpWeekCharacters);
+		//add(bgYellow);
+		//add(bgSprite);
+		//add(grpWeekCharacters);
 
 		var tracksSprite:FlxSprite = new FlxSprite(FlxG.width * 0.07, bgSprite.y + 425).loadGraphic(Paths.image('Menu_Tracks'));
 		tracksSprite.antialiasing = ClientPrefs.globalAntialiasing;
-		add(tracksSprite);
+		//add(tracksSprite);
 
-		txtTracklist = new FlxText(FlxG.width * 0.05, tracksSprite.y + 60, 0, "", 32);
+		txtTracklist = new FlxText(1052, 72, 0, "", 40);
 		txtTracklist.alignment = CENTER;
-		txtTracklist.font = rankText.font;
-		txtTracklist.color = 0xFFe55777;
+		txtTracklist.setFormat(Paths.font('AmaticSC.ttf'), 32);
+		txtTracklist.color = 0xffffffff;
 		add(txtTracklist);
 		// add(rankText);
 		add(scoreText);
-		add(txtWeekTitle);
+		//add(txtWeekTitle);
 
 		changeWeek();
 		changeDifficulty();
@@ -196,11 +239,17 @@ class StoryMenuState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
+		// trace(scoreText.x, scoreText.y, txtTracklist.x, txtTracklist.y);
+		if (curWeek == 0) 
+			week1.alpha = 1;
+		else 
+			week1.alpha = 0.5;
+			
 		// scoreText.setFormat('VCR OSD Mono', 32);
 		lerpScore = Math.floor(FlxMath.lerp(lerpScore, intendedScore, CoolUtil.boundTo(elapsed * 30, 0, 1)));
 		if(Math.abs(intendedScore - lerpScore) < 10) lerpScore = intendedScore;
 
-		scoreText.text = "WEEK SCORE:" + lerpScore;
+		scoreText.text = "HIGH SCORE:" + lerpScore;
 
 		// FlxG.watch.addQuick('font', scoreText.font);
 
@@ -237,19 +286,24 @@ class StoryMenuState extends MusicBeatState
 			else
 				leftArrow.animation.play('idle');
 
+			/*
 			if (controls.UI_RIGHT_P)
 				changeDifficulty(1);
 			else if (controls.UI_LEFT_P)
 				changeDifficulty(-1);
 			else if (upP || downP)
 				changeDifficulty();
+			*/
 
+		/*
 			if(FlxG.keys.justPressed.CONTROL)
 			{
 				persistentUpdate = false;
 				openSubState(new GameplayChangersSubstate());
 			}
-			else if(controls.RESET)
+				*/
+				
+			if(controls.RESET)
 			{
 				persistentUpdate = false;
 				openSubState(new ResetScoreSubState('', curDifficulty, '', curWeek));
@@ -291,13 +345,8 @@ class StoryMenuState extends MusicBeatState
 
 				grpWeekText.members[curWeek].startFlashing();
 
-				for (char in grpWeekCharacters.members)
-				{
-					if (char.character != '' && char.hasConfirmAnimation)
-					{
-						char.animation.play('confirm');
-					}
-				}
+				var bf:MenuCharacter = grpWeekCharacters.members[1];
+				if(bf.character != '' && bf.hasConfirmAnimation) grpWeekCharacters.members[1].animation.play('confirm');
 				stopspamming = true;
 			}
 
@@ -479,7 +528,7 @@ class StoryMenuState extends MusicBeatState
 		txtTracklist.text = txtTracklist.text.toUpperCase();
 
 		txtTracklist.screenCenter(X);
-		txtTracklist.x -= FlxG.width * 0.35;
+		txtTracklist.x -= FlxG.width * -0.37;
 
 		#if !switch
 		intendedScore = Highscore.getWeekScore(loadedWeeks[curWeek].fileName, curDifficulty);

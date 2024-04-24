@@ -81,6 +81,26 @@ class CreditsState extends MusicBeatState
 		#end
 
 		var pisspoop:Array<Array<String>> = [ //Name - Icon name - Description - Link - BG Color
+			['Another Among Us Mod Team'],
+			['Ve3h',		'veeh',		'Director, Programmer, Artist/Animator and Composer',								'https://twitter.com/Shadow_Mario_',	'444444'],
+			['Apollo',		'apollo',	'Director and Main Artist',															'https://twitter.com/RiverOaken',		'B42F71'],
+			['Puff',		'puff',		'Co-Director',																		'https://twitter.com/RiverOaken',		'B42F71'],
+
+			['X02RE',		'xotwoore',	'Icon Artist',																		'https://twitter.com/Shadow_Mario_',	'444444'],
+			['Catney',		'catney',	'Portraits Artist and Composer',													'https://twitter.com/yoshubs',			'5E99DF'],
+			['Deiv',		'deiv',		'Artist',																			'https://twitter.com/yoshubs',			'5E99DF'],
+
+			['Yubo',		'yubo',		'Composer',																			'https://twitter.com/Shadow_Mario_',	'444444'],
+			['Edd',			'edd',		'Composer',																			'https://twitter.com/Shadow_Mario_',	'444444'],
+
+			['Nait',		'nait',		'Main Charter',																		'https://twitter.com/Shadow_Mario_',	'444444'],
+			['Bobersand',	'bobsandicon',		'Charter',																	'https://twitter.com/Shadow_Mario_',	'444444'],
+			['Space Puppy',	'spacepuppy',		'Charter',																	'https://twitter.com/Shadow_Mario_',	'444444'],
+			['Luismindoo',	'luismindoo','Charter',																			'https://twitter.com/Shadow_Mario_',	'444444'],
+
+			['Emeredical',	'emeredical','Programmer',																		'https://twitter.com/Shadow_Mario_',	'444444'],
+
+			[''],
 			['Psych Engine Team'],
 			['Shadow Mario',		'shadowmario',		'Main Programmer of Psych Engine',								'https://twitter.com/Shadow_Mario_',	'444444'],
 			['RiverOaken',			'river',			'Main Artist/Animator of Psych Engine',							'https://twitter.com/RiverOaken',		'B42F71'],
