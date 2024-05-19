@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="opos.png">
+	<!-- Created with Adobe Animate version 23.0.0.407 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="opos0000" x="10" y="10" width="279" height="295"/>
+	<SubTexture name="opos0001" x="10" y="10" width="279" height="295"/>
+	<SubTexture name="opos0002" x="10" y="10" width="279" height="295"/>
+	<SubTexture name="opos0003" x="299" y="10" width="279" height="295"/>
+	<SubTexture name="opos0004" x="299" y="10" width="279" height="295"/>
+	<SubTexture name="opos0005" x="299" y="10" width="279" height="295"/>
+</TextureAtlas>

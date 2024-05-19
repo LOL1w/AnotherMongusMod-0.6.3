@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="songtablet.png">
+	<!-- Created with Adobe Animate version 23.0.0.407 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="songstablet0000" x="10" y="10" width="475" height="161"/>
+	<SubTexture name="songstablet0001" x="10" y="10" width="475" height="161"/>
+	<SubTexture name="songstablet0002" x="10" y="10" width="475" height="161"/>
+	<SubTexture name="songstablet0003" x="10" y="181" width="475" height="161"/>
+	<SubTexture name="songstablet0004" x="10" y="181" width="475" height="161"/>
+	<SubTexture name="songstablet0005" x="10" y="181" width="475" height="161"/>
+</TextureAtlas>

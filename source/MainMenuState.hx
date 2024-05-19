@@ -227,7 +227,7 @@ class MainMenuState extends MusicBeatState
             {
                FlxG.sound.play('assets/sounds/select.ogg');
 
-               MusicBeatState.switchState(new CreditsState());
+               MusicBeatState.switchState(new CreditsMenuState());
             }
             
         else if (FlxG.keys.justPressed.SEVEN)

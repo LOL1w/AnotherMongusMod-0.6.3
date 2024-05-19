@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="opponenttablet.png">
+	<!-- Created with Adobe Animate version 23.0.0.407 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="opponenttablet0000" x="10" y="10" width="467" height="437"/>
+	<SubTexture name="opponenttablet0001" x="10" y="10" width="467" height="437"/>
+	<SubTexture name="opponenttablet0002" x="10" y="10" width="467" height="437"/>
+	<SubTexture name="opponenttablet0003" x="487" y="10" width="467" height="437"/>
+	<SubTexture name="opponenttablet0004" x="487" y="10" width="467" height="437"/>
+	<SubTexture name="opponenttablet0005" x="487" y="10" width="467" height="437"/>
+</TextureAtlas>

@@ -1,51 +1,49 @@
 package;
-import openfl.filters.ShaderFilter;
-import flixel.text.FlxText;
+
 import flixel.FlxSprite;
+import flixel.FlxState;
 import flixel.FlxG;
-import flash.display.BlendMode;
-import openfl.display.BlendMode;
+import flixel.graphics.frames.FlxAtlasFrames;
+import flixel.addons.transition.FlxTransitionableState;
+
+using StringTools;
 
 class CreditsMenuState extends MusicBeatState
 {
-    var background:FlxSprite;
-    var tvs:FlxSprite;
-    var mainTv:FlxSprite;
-    var amonguses:FlxSprite;
-    var fnafStatic:FlxSprite;
-    var pershader:ShaderFilter;
+    var sizeThings = 0.8;
 
-    var names:FlxText;
-    var icons:FlxSprite;
-    var rolesTxt:FlxText;
+    var white:FlxSprite;
+    var red:FlxSprite;
 
-    var overlay:FlxSprite;
 
     override public function create():Void
-        {
-            //var pershader = new ShaderFilter(new Perspective());
-            amonguses = new FlxSprite();
-            amonguses.frames = Paths.getSparrowAtlas('creditsmenu/amonguses');
-            amonguses.animation.addByPrefix('among', 'among', 24, true);
-            amonguses.animation.play('among');
-            add(amonguses);
-            amonguses.updateHitbox();
+    {
+        white = new FlxSprite(-100, 410);
+        white.frames = Paths.getSparrowAtlas('creditsmenu/white');
+        white.animation.addByPrefix('anim', 'white', 18, true);
+        white.animation.play('anim');
+        white.scale.set(sizeThings, sizeThings);
 
-            overlay = new FlxSprite();
-            overlay.loadGraphic('assets/images/creditsmenu/overlay.png');
-            //overlay.blend = OVERLAY;
-            overlay.setGraphicSize(FlxG.width, FlxG.height);
-            overlay.screenCenter();
-            add(overlay);
+        add(white);
+        white.updateHitbox();
 
-        }
+        red = new FlxSprite(1090, white.y - 120);
+        red.frames = Paths.getSparrowAtlas('creditsmenu/red');
+        red.animation.addByPrefix('anim', 'red', 18, true);
+        red.animation.play('anim');
+        red.scale.set(sizeThings, sizeThings);
+
+        add(red);
+        red.updateHitbox();
+
+    	super.create();
+    }
 
     override public function update(elapsed:Float):Void
-        {
-            if (FlxG.keys.anyJustPressed([ESCAPE, BACKSPACE]))
-                {
-                    MusicBeatState.switchState(new MainMenuState());
-                }
+    {
 
-        }
+        if (FlxG.keys.justPressed.ESCAPE)
+            FlxG.switchState(new MainMenuState());
+    	super.update(elapsed);
+    }
 }

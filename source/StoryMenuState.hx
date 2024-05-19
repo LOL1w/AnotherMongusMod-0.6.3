@@ -50,6 +50,7 @@ class StoryMenuState extends MusicBeatState
 
 	var starFG:FlxBackdrop;
     var starBG:FlxBackdrop;
+	var iconsweeks:FlxSprite;
     var weektablet:FlxSprite;
     var songtablet:FlxSprite;
     var opponenttablet:FlxSprite;
@@ -85,24 +86,32 @@ class StoryMenuState extends MusicBeatState
 		add(weektablet);
 
 		week1 = new FlxSprite(76, 99);
-		week1.loadGraphic('assets/images/storymode/week1.png');
+		week1.frames = Paths.getSparrowAtlas('storymode/week1');
+		week1.animation.addByPrefix('week1', 'week1', 24, true);
+        week1.animation.play('week1');
 		add(week1);
 		week1.alpha = 0.5;
 
 		songtablet = new FlxSprite(767, 54);
-		songtablet.loadGraphic('assets/images/storymode/songtablet.png');
+		songtablet.frames = Paths.getSparrowAtlas('storymode/songtablet');
+		songtablet.animation.addByPrefix('songstablet', 'songstablet', 24, true);
+        songtablet.animation.play('songstablet');
 		add(songtablet);
 
 		opponenttablet = new FlxSprite(780, 262);
-		opponenttablet.loadGraphic('assets/images/storymode/opponenttablet.png');
+		opponenttablet.frames = Paths.getSparrowAtlas('storymode/opponenttablet');
+		opponenttablet.animation.addByPrefix('opponenttablet', 'opponenttablet', 24, true);
+        opponenttablet.animation.play('opponenttablet');
 		add(opponenttablet);
 
 		opos = new FlxSprite(869, 371);
-		opos.loadGraphic('assets/images/storymode/opos.png');
+		opos.frames = Paths.getSparrowAtlas('storymode/opos');
+		opos.animation.addByPrefix('opos', 'opos', 24, true);
+        opos.animation.play('opos');
 		add(opos);
+		opos.alpha = 0;
 
-
-		scoreText = new FlxText(764, -18, 0, "SCORE: 49324858", 42);
+		scoreText = new FlxText(764, -10, 0, "SCORE: 49324858", 42);
 		scoreText.setFormat(Paths.font('AmaticSC.ttf'), 60);
 
 		txtWeekTitle = new FlxText(FlxG.width * 0.7, 10, 0, "", 32);
@@ -240,11 +249,37 @@ class StoryMenuState extends MusicBeatState
 	override function update(elapsed:Float)
 	{
 		// trace(scoreText.x, scoreText.y, txtTracklist.x, txtTracklist.y);
-		if (curWeek == 0) 
+		/*
+		if (curWeek == 0) {
+			opos.alpha = 1;
 			week1.alpha = 1;
-		else 
-			week1.alpha = 0.5;
-			
+		}
+		else
+			{
+				opos.alpha = 0;
+				week1.alpha = 0.5;
+			}
+		*/
+		if (FlxG.mouse.overlaps(week1))
+			{		
+				selectedWeek = true;
+					opos.alpha = 1;
+					week1.alpha = 1;
+					//selectWeek();
+			}
+		else
+			{
+				opos.alpha = 0;
+				week1.alpha = 0.5;
+			}
+		if (FlxG.mouse.overlaps(week1) && FlxG.mouse.justPressed)
+			{
+				if (selectedWeek == true)
+					{
+						selectWeek();
+					}
+			}
+
 		// scoreText.setFormat('VCR OSD Mono', 32);
 		lerpScore = Math.floor(FlxMath.lerp(lerpScore, intendedScore, CoolUtil.boundTo(elapsed * 30, 0, 1)));
 		if(Math.abs(intendedScore - lerpScore) < 10) lerpScore = intendedScore;
@@ -257,6 +292,7 @@ class StoryMenuState extends MusicBeatState
 		{
 			var upP = controls.UI_UP_P;
 			var downP = controls.UI_DOWN_P;
+		/*
 			if (upP)
 			{
 				changeWeek(-1);
@@ -285,6 +321,7 @@ class StoryMenuState extends MusicBeatState
 				leftArrow.animation.play('press');
 			else
 				leftArrow.animation.play('idle');
+		*/
 
 			/*
 			if (controls.UI_RIGHT_P)
